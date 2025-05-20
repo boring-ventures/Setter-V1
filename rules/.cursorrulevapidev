@@ -1,0 +1,167 @@
+🧠 Prompt for Cursor AI – Add Vapi Web SDK to Next.js Landing Page
+
+We're integrating the Vapi AI Voice Assistant into a Next.js landing page. Follow these steps to install the SDK, avoid SSR issues, and allow user-triggered activation through a button. This setup ensures clean separation of concerns and secure browser-only usage.
+
+Objective:
+---------
+Integrate the `@vapi-ai/web` SDK on the frontend, avoiding server-side rendering conflicts, and allow users to start the voice assistant by clicking a button.
+
+🧪 Setup Using Vapi Quickstart Guide:
+
+1. Install the Vapi Web SDK in your project root:
+
+```
+npm install @vapi-ai/web
+```
+or
+```
+yarn add @vapi-ai/web
+```
+(Reference: https://docs.vapi.ai/quickstart/web)
+
+2. Import and initialize Vapi in your landing page:
+
+```javascript
+import Vapi from "@vapi-ai/web";
+const vapi = new Vapi("your-public-key-or-jwt");
+```
+
+3. Add a button to your HTML and trigger the assistant on click:
+
+```javascript
+document.getElementById('call-btn').onclick = () => {
+  vapi.start("your-assistant-id-from-dashboard");
+};
+```
+
+You can find both your assistant's ID and your public key in the Vapi dashboard.
+When the button is clicked, it starts a voice session in the browser.
+
+🧩 Modern Implementation in Next.js (Client-Only)
+
+Replace auto-start behavior with a safe `useEffect` setup and a custom button:
+
+```tsx
+import { useEffect, useState } from "react";
+
+export default function HomePage() {
+  const [vapi, setVapi] = useState<any>(null);
+
+  useEffect(() => {
+    import("@vapi-ai/web").then(({ default: Vapi }) => {
+      const instance = new Vapi("your-public-key-or-jwt");
+      setVapi(instance);
+    });
+  }, []);
+
+  const handleStart = () => {
+    if (vapi) {
+      vapi.start("your-assistant-id");
+    }
+  };
+
+  return (
+    <main className="flex flex-col items-center justify-center min-h-screen px-4 py-8 text-center">
+      <h1 className="text-3xl font-bold mb-4">Welcome to Our AI Landing Page</h1>
+      <p className="mb-6">Talk to our assistant using the button below!</p>
+      <button
+        onClick={handleStart}
+        className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition"
+      >
+        Start Voice Assistant
+      </button>
+    </main>
+  );
+}
+```
+
+🔐 Security and Performance Considerations:
+------------------------------------------
+- Never expose your private keys. Only use your public key or JWT.
+- Ensure that the SDK is imported inside `useEffect` to prevent SSR issues.
+- Always use `navigator.clipboard` or async logic only after user interaction.
+- Modularize logic for maintainability (e.g., move Vapi setup into a custom hook).
+- Implement proper WebSocket reconnection handling
+- Manage memory for audio streams appropriately
+- Implement cleanup on call end
+- Handle concurrent calls safely
+- Obtain explicit user consent for recording
+- Handle audio data according to privacy laws
+- Implement proper data retention policies
+
+🎯 Event Handling Requirements:
+---------------------------
+```typescript
+// Add comprehensive event handling
+useEffect(() => {
+  if (vapi) {
+    vapi.on("call-start", () => {
+      console.log("Call started");
+      // Handle call start
+    });
+
+    vapi.on("call-end", () => {
+      console.log("Call ended");
+      // Cleanup resources
+    });
+
+    vapi.on("speech-start", () => {
+      // Handle speech start
+    });
+
+    vapi.on("speech-end", () => {
+      // Handle speech end
+    });
+
+    vapi.on("volume-level", (level) => {
+      // Handle volume changes
+    });
+
+    vapi.on("error", (error) => {
+      console.error("Vapi error:", error);
+      // Implement proper error handling
+    });
+
+    // Cleanup event listeners
+    return () => {
+      vapi.stop();
+    };
+  }
+}, [vapi]);
+```
+
+🚨 Error Handling:
+----------------
+```typescript
+const handleStart = async () => {
+  try {
+    if (!vapi) {
+      throw new Error("Vapi not initialized");
+    }
+
+    // Request microphone permissions
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    
+    // Start the call
+    await vapi.start("your-assistant-id");
+  } catch (error) {
+    if (error instanceof DOMException && error.name === "NotAllowedError") {
+      // Handle microphone permission denial
+      console.error("Microphone access denied");
+    } else if (error instanceof Error) {
+      // Handle other errors
+      console.error("Failed to start call:", error.message);
+    }
+    // Show user-friendly error message
+  }
+};
+```
+
+📚 References:
+--------------
+- Web Quickstart: https://docs.vapi.ai/quickstart/web
+- Dashboard: https://docs.vapi.ai/quickstart/dashboard
+
+✅ Summary:
+-----------
+This prompt sets up the Vapi SDK securely in a Next.js landing page using dynamic imports and user-initiated activation. Ideal for conversational UI MVPs and AI-enabled frontend prototypes.

@@ -1,0 +1,228 @@
+Vapi AI Voice Assistant Integration Documentation - 100 DAYS to save BOLIVIA
+
+## Project Overview
+This project implements a Next.js web application with Vapi AI voice assistant integration. The application presents a modern page for the "100 DAYS to save BOLIVIA" initiative that allows users to interact with Samuel Doria Medina's voice assistant through their microphone. The integration was built with client-side rendering to avoid SSR issues and follows best practices for voice interactions.
+
+## Technical Specifications
+
+### Key Dependencies
+- Next.js 14.1.3 - Frontend framework
+- React 18.2.0 - UI library
+- TypeScript - Type checking
+- Tailwind CSS - Styling
+- @vapi-ai/web - Voice assistant SDK
+- Next Font - For Montserrat typography
+
+### Main Components
+
+#### 1. Main Layout
+Located in `src/app/layout.tsx`
+
+This component provides the basic HTML structure with:
+- SEO metadata
+- Montserrat font integration
+- Mobile device meta tags
+- Color theme for mobile browsers
+
+```javascript
+import { Montserrat } from 'next/font/google'
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-montserrat',
+  weight: ['400', '500', '600', '700', '800'],
+})
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" className={montserrat.variable}>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#002F6C" />
+        <link rel="icon" href="/favicon.ico" />
+      </head>
+      <body className="bg-white min-h-screen font-sans">
+        {children}
+      </body>
+    </html>
+  )
+}
+```
+
+#### 2. Main Page
+Located in `src/app/page.tsx`
+
+Implements a modern interface with the following sections:
+- Header with gradient and background texture
+- Samuel Doria Medina's voice assistant section
+- Initiative introduction
+- Main proposals (5 points)
+- Key measures (5 points)
+- Call to action
+- Footer
+
+The structure is fully responsive and uses a modular component-based design.
+
+#### 3. SpanishVapiButton Component
+Located in `src/components/SpanishVapiButton.tsx`
+
+This component manages the interaction with the Vapi SDK:
+- Dynamic SDK import to avoid SSR issues
+- State management: idle, loading, listening, error
+- Microphone permissions request
+- Assistant initialization with credentials
+- Event and error handling
+- Interactive UI and user feedback
+
+```javascript
+// Assistant initialization
+const vapi = new Vapi('5942b814-e98b-47a6-b984-9d81d400b06a')
+vapi.start('b6c8c7e5-2f60-4c71-88ce-4726cd1c9863')
+```
+
+### Styles and Resources
+
+#### 1. Global Styles
+Located in `src/styles/globals.css`
+
+Implements an abstraction layer over Tailwind CSS:
+- Custom CSS variables for main colors
+- Font and typography configuration
+- Reusable base components (buttons, backgrounds, etc.)
+- Custom utilities
+
+```css
+:root {
+  --color-blue: #002F6C;
+  --color-yellow: #FFD200;
+  --color-white: #FFFFFF;
+}
+```
+
+#### 2. SVG Resources
+Located in `public/images/pattern.svg`
+
+Dot pattern for header background texture:
+```svg
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="1.5" fill="#ffffff" fill-opacity="0.3" />
+    </pattern>
+  </defs>
+  <rect x="0" y="0" width="100" height="100" fill="url(#dots)" />
+</svg>
+```
+
+## Voice Assistant Implementation
+
+### Vapi Credentials
+- **Public API Key**: `5942b814-e98b-47a6-b984-9d81d400b06a`
+- **Assistant ID**: `b6c8c7e5-2f60-4c71-88ce-4726cd1c9863`
+
+### Initialization Flow
+1. User clicks on "Talk to Samuel Doria Medina" button
+2. Microphone permissions are requested
+3. Vapi SDK is dynamically loaded
+4. Initialization with API key
+5. Conversation starts with assistant ID
+6. Start and end conversation events are monitored
+7. Visual feedback is shown to the user based on state
+
+### State Management
+- `idle`: Ready to start conversation
+- `loading`: Initializing assistant
+- `listening`: Active conversation
+- `error`: An error occurred
+
+### Error Handling
+The system captures and displays errors for:
+- Microphone permissions
+- SDK initialization
+- Vapi API communication
+- Issues during conversation
+
+## Thematic Content
+
+### Main Proposals
+1. Stabilize the economy and bring dollars back to the country
+2. Regional autonomy to manage resources
+3. Fiscal discipline and state transparency
+4. Open Bolivia: exports, investment, and economic freedom
+5. Restore merit, reward effort
+
+### Key Measures
+1. Independent Central Bank
+2. Public spending audit
+3. State digitalization
+4. Investment in health and education
+5. Referendum against indefinite re-election
+
+## Optimization and Performance
+
+### Implemented Optimizations
+- Dynamic import of heavy components to improve initial load time
+- Conditional loading of Vapi SDK only when needed
+- Optimized images and SVG for vector graphics
+- Critical inline styles to improve FCP (First Contentful Paint)
+
+### Accessibility Considerations
+- Alt text for visual elements
+- Adequate contrast for readability
+- Clear messages during loading and error states
+- Semantic HTML structure
+
+## Extension and Customization
+
+### Adding New Proposals
+To add new proposals, modify the corresponding section in `src/app/page.tsx`:
+
+```jsx
+<ul className="divide-y divide-gray-100">
+  <li className="p-5 hover:bg-gray-50 transition-colors">
+    <div className="flex items-start">
+      <div className="w-6 h-6 rounded-full bg-[#002F6C] text-white flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+        <span className="text-xs font-bold">6</span>
+      </div>
+      <p className="text-gray-700">New proposal here.</p>
+    </div>
+  </li>
+  {/* More proposals */}
+</ul>
+```
+
+### Changing the Assistant
+To change the Vapi assistant, update the API key and assistant ID values in `src/components/SpanishVapiButton.tsx`:
+
+```javascript
+const vapi = new Vapi('YOUR_PUBLIC_API_KEY')
+vapi.start('YOUR_ASSISTANT_ID')
+```
+
+## Deployment
+
+To deploy the application in production:
+
+```bash
+npm run build
+npm start
+```
+
+For local development:
+
+```bash
+npm run dev
+```
+
+The application will be available at http://localhost:3000 or the next available port.
+
+## Conclusion
+
+This implementation follows modern web development best practices, using Next.js and React with a focus on performance, accessibility, and user experience. The integration with Vapi AI allows for natural conversational interaction that significantly enhances the user experience.
+
+The modular design facilitates future content updates and extensions, ensuring that the platform can evolve according to the needs of the "100 DAYS to save BOLIVIA" project. 

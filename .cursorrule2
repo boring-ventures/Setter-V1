@@ -1,0 +1,109 @@
+We are building a minimalist and clean landing page using Next.js that includes a single purpose: allowing users to initiate a call with a Vapi AI assistant. The site will be deployed to Vercel. Here's the complete setup and implementation instructions:
+
+1. PROJECT STACK
+- Framework: Next.js (App Router or Pages Router is fine; using CSR only)
+- Deployment: Vercel (Serverless, with edge runtime constraints)
+- Styling: TailwindCSS
+- AI Assistant SDK: @vapi-ai/web (browser-only)
+
+2. FOLDER STRUCTURE
+/
+├── public/
+│   └── favicon.ico
+├── pages/
+│   └── index.tsx         <-- Main UI page
+├── components/
+│   └── CallButton.tsx    <-- Vapi assistant button logic
+├── styles/
+│   └── globals.css       <-- Tailwind base styles
+├── .env.local            <-- Local development environment
+└── tailwind.config.js
+
+3. INSTALL DEPENDENCIES
+Run:
+- npm install next react react-dom
+- npm install -D tailwindcss postcss autoprefixer
+- npx tailwindcss init -p
+- npm install @vapi-ai/web
+
+4. TAILWIND SETUP
+In `tailwind.config.js`, set:
+
+
+
+-content: ["./pages//*.{js,ts,jsx,tsx}", "./components//*.{js,ts,jsx,tsx}"]
+
+go
+Copiar
+Editar
+In `globals.css`:
+
+
+
+-@tailwind base; @tailwind components; @tailwind utilities;
+
+java
+Copiar
+Editar
+
+5. ENV FILE (.env.local)
+Define:
+
+
+-NEXT_PUBLIC_VAPI_PUBLIC_KEY=your-vapi-public-key NEXT_PUBLIC_ASSISTANT_ID=your-assistant-id
+
+Make sure to add these manually in the Vercel dashboard as well under Project Settings > Environment Variables (with NEXT_PUBLIC_ prefix).
+
+6. COMPONENT LOGIC – CallButton.tsx
+Only run Vapi SDK client-side. Example:
+```tsx
+"use client";
+import { useEffect } from "react";
+import Vapi from "@vapi-ai/web";
+
+export default function CallButton() {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const vapi = new Vapi(process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY!);
+
+      const btn = document.getElementById("call-btn");
+      if (btn) {
+        btn.addEventListener("click", () => {
+          vapi.start(process.env.NEXT_PUBLIC_ASSISTANT_ID!);
+        });
+      }
+    }
+  }, []);
+
+  return (
+    <button
+      id="call-btn"
+      className="bg-black text-white py-3 px-6 rounded-xl hover:scale-105 transition"
+    >
+      Call Assistant
+    </button>
+  );
+}
+
+
+-MAIN PAGE – index.tsx
+import Head from "next/head";
+import CallButton from "../components/CallButton";
+
+export default function Home() {
+  return (
+    <>
+      <Head>
+        <title>Minimal AI Page</title>
+        <meta name="description" content="Minimal Vapi landing page" />
+      </Head>
+      <main className="flex min-h-screen items-center justify-center bg-white">
+        <CallButton />
+      </main>
+    </>
+  );
+}
+
+
+-
+

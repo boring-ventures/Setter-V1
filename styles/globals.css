@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --animate-meteor: meteor 5s linear infinite;
+    --color-blue: #002F6C;
+    --color-yellow: #FFD200;
+    --color-white: #FFFFFF;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply text-gray-900 bg-white;
+    overflow-x: hidden;
+    background-color: theme('colors.brand.white');
+    color: theme('colors.gray.800');
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: theme('colors.brand.blue');
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto;
+  }
+  
+  .gradient-bg {
+    @apply bg-gradient-to-br from-brand-blue/95 via-brand-blue/85 to-brand-blue/70;
+  }
+  
+  .avatar-pulse {
+    @apply rounded-full bg-brand-yellow w-20 h-20 shadow-md border-2 border-white animate-pulse;
+  }
+  
+  .call-button {
+    @apply bg-brand-blue text-white py-3 px-6 rounded-xl shadow-lg hover:scale-105 transition duration-200 w-full max-w-xs font-medium;
+  }
+  
+  .end-call-button {
+    @apply bg-red-600 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-red-700 hover:scale-105 transition duration-200 w-full max-w-xs font-medium;
+  }
+  
+  .call-status {
+    @apply text-white text-sm mt-2 bg-brand-blue/80 px-4 py-1 rounded-full shadow-sm;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-lg p-6;
+  }
+
+  .highlight-text {
+    @apply text-brand-yellow font-semibold;
+  }
+
+  .main-container {
+    @apply min-h-screen flex items-center justify-center px-4 py-10 md:py-24;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-[#862896];
+  }
+
+  .btn-primary {
+    @apply bg-[#E00621] text-white px-8 py-4 rounded-2xl hover:bg-opacity-90 transition duration-300;
+  }
+}
+
+@keyframes meteor {
+  0% {
+    transform: rotate(var(--angle)) translateX(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(var(--angle)) translateX(-500px);
+    opacity: 0;
+  }
+}
+
+.animate-meteor {
+  animation: var(--animate-meteor);
+}
+
+/* Fix for z-index and absolute positioning */
+.meteor-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.content-container {
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(1px);
+}
+
+/* Yellow accent line */
+.accent-line {
+  @apply bg-brand-yellow h-1 w-20 my-4 rounded-full mx-auto;
+}
+
+/* Custom animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Gradient backgrounds */
+.gradient-purple {
+  background: linear-gradient(135deg, #862896 0%, #6a1b77 100%);
+}
+
+/* Transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}

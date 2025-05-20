@@ -1,0 +1,66 @@
+---
+description: Ensure all environment variables are defined correctly for both development and production
+globs: [.env.local, @vercel/project/settings]
+alwaysApply: true
+---
+
+- Do not hardcode any API keys or credentials directly in the codebase
+- Use `.env.local` for local development; for production, define variables in Vercel’s Environment Variables section
+- Prefix all client-exposed environment variables with `NEXT_PUBLIC_`
+- After adding or modifying variables in Vercel, trigger a manual redeploy to apply changes
+- Example required keys:
+  - NEXT_PUBLIC_VAPI_PUBLIC_KEY
+  - NEXT_PUBLIC_ASSISTANT_ID
+
+---
+description: Restrict usage of the Vapi SDK to the client environment only
+globs: [components/**/*.tsx, pages/**/*.tsx]
+alwaysApply: true
+---
+
+- Vapi (`@vapi-ai/web`) must only be initialized inside `useEffect` with a `typeof window !== "undefined"` guard
+- Never invoke the Vapi SDK in Next.js SSR methods like `getServerSideProps`, `getStaticProps`, or in middleware/API routes
+- Mark the component with `"use client"` directive if using Next.js App Router
+- Keep SDK logic isolated in a dedicated component (e.g., @components/CallButton.tsx)
+
+---
+description: Validate and lint code before any production deployment
+globs: [**/*.ts, **/*.tsx]
+alwaysApply: true
+---
+
+- Always run `npm run build` and ensure zero warnings or errors before pushing
+- Run `npm run lint` and fix all issues before merging into main or deploying
+- Validate TailwindCSS setup:
+  - Ensure tailwind.config.js includes `./pages/**/*` and `./components/**/*` in the `content` field
+- Remove unused CSS and components to reduce bundle size
+
+---
+description: Enforce deployment workflow using Git and Vercel integration
+globs: [.vercel, .git, main, dev]
+alwaysApply: true
+---
+
+- All deployments must be done via GitHub → Vercel integration
+- Use `main` branch for production, and `dev` or feature branches for preview/staging
+- Use pull requests with proper code reviews
+- Apply semantic versioning to releases (e.g., v1.0.0) and tag them post-QA
+
+---
+description: Add logging and error handling for Vapi initialization and invocation
+globs: [components/CallButton.tsx]
+alwaysApply: true
+---
+
+- Wrap all `vapi.start(...)` calls in `try/catch` blocks to catch silent SDK failures
+- Use `console.log()` inside `useEffect` to confirm SDK is initialized and ready
+- Example:
+  ```ts
+  useEffect(() => {
+    try {
+      const vapi = new Vapi(publicKey);
+      console.log("Vapi initialized");
+    } catch (err) {
+      console.error("Failed to initialize Vapi:", err);
+    }
+  }, []);
