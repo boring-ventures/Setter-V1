@@ -22,7 +22,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: theme('colors.brand.blue');
+    @apply font-display;
   }
 }
 
@@ -31,45 +31,172 @@
     @apply max-w-7xl mx-auto;
   }
   
-  .gradient-bg {
-    @apply bg-gradient-to-br from-brand-blue/95 via-brand-blue/85 to-brand-blue/70;
-  }
-  
-  .avatar-pulse {
-    @apply rounded-full bg-brand-yellow w-20 h-20 shadow-md border-2 border-white animate-pulse;
-  }
-  
-  .call-button {
-    @apply bg-brand-blue text-white py-3 px-6 rounded-xl shadow-lg hover:scale-105 transition duration-200 w-full max-w-xs font-medium;
-  }
-  
-  .end-call-button {
-    @apply bg-red-600 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-red-700 hover:scale-105 transition duration-200 w-full max-w-xs font-medium;
-  }
-  
-  .call-status {
-    @apply text-white text-sm mt-2 bg-brand-blue/80 px-4 py-1 rounded-full shadow-sm;
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r;
   }
 
-  .card {
-    @apply bg-white rounded-xl shadow-lg p-6;
+  .glass-card {
+    @apply backdrop-blur-lg bg-white/5 border border-white/10;
   }
 
-  .highlight-text {
-    @apply text-brand-yellow font-semibold;
+  .animated-border-card {
+    @apply relative overflow-hidden rounded-xl transition-all duration-300;
   }
 
-  .main-container {
-    @apply min-h-screen flex items-center justify-center px-4 py-10 md:py-24;
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
   }
+}
 
-  .section-title {
-    @apply text-3xl md:text-4xl font-bold text-[#862896];
+/* Border Flow Animation */
+@keyframes border-flow {
+  0% {
+    transform: translateX(-100%) translateY(-100%);
   }
+  100% {
+    transform: translateX(100%) translateY(100%);
+  }
+}
 
-  .btn-primary {
-    @apply bg-[#E00621] text-white px-8 py-4 rounded-2xl hover:bg-opacity-90 transition duration-300;
+.animate-border-flow {
+  animation: border-flow 3s ease-in-out infinite;
+}
+
+/* Wave Animation */
+@keyframes wave {
+  0% {
+    transform: translateX(0) translateY(0);
   }
+  50% {
+    transform: translateX(-25px) translateY(15px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+.animate-wave {
+  animation: wave 20s ease-in-out infinite;
+}
+
+/* Glow Animation */
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+.animate-glow {
+  animation: glow 4s ease-in-out infinite;
+}
+
+/* Gradient Shift Animation */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient-shift 8s ease infinite;
+  background-size: 200% 200%;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-blue-500/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-blue-600/50;
+}
+
+/* Card Hover Effects */
+.hover-card {
+  @apply transition-all duration-300;
+}
+
+.hover-card:hover {
+  @apply transform -translate-y-1;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Gradient Text Animation */
+.gradient-text-animate {
+  @apply bg-clip-text text-transparent bg-gradient-to-r;
+  background-size: 200% auto;
+  animation: text-gradient 8s linear infinite;
+}
+
+@keyframes text-gradient {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Shine Effect */
+@keyframes shine {
+  from {
+    mask-position: 150%;
+  }
+  to {
+    mask-position: -50%;
+  }
+}
+
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: shine 3s infinite;
 }
 
 @keyframes meteor {
@@ -110,17 +237,6 @@
 /* Yellow accent line */
 .accent-line {
   @apply bg-brand-yellow h-1 w-20 my-4 rounded-full mx-auto;
-}
-
-/* Custom animations */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
 }
 
 /* Gradient backgrounds */

@@ -13,6 +13,10 @@ module.exports = {
           white: '#FFFFFF',
         },
       },
+      fontFamily: {
+        display: ['Space Grotesk', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+      },
       animation: {
         meteor: 'meteor 5s linear infinite',
       },
