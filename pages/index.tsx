@@ -47,18 +47,28 @@ export default function Home() {
         />
       </Head>
 
+      {/* Top Bar */}
+      <div className="bg-[#862896] text-white py-4 px-4 text-center">
+        <div className="container mx-auto text-base font-medium">
+          Juntos por una Bolivia mejor 🇧🇴
+        </div>
+      </div>
+
       {/* Hero Section */}
       <motion.section 
         initial="initial"
         animate="animate"
-        className="min-h-screen relative overflow-hidden"
+        className="min-h-[calc(100vh-48px)] relative overflow-hidden bg-gradient-to-br from-[#862896]/10 via-white/5 to-[#E00621]/10"
       >
         {/* Background with enhanced gradient and pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#862896] via-white to-[#E00621] opacity-10" />
-        <div className="absolute inset-0 bg-[url('/hero-pattern.svg')] opacity-30" />
-        <div className="absolute inset-0 bg-white/70 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#862896]/20 via-transparent to-[#E00621]/20" />
+        <div 
+          className="absolute inset-0 bg-[url('/hero-pattern.svg')] opacity-20 bg-repeat"
+          style={{ backgroundSize: '50px 50px' }}
+        />
+        <div className="absolute inset-0 bg-white/10" />
         
-        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center relative min-h-screen">
+        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center relative min-h-[calc(100vh-48px)]">
           <motion.div variants={fadeIn} className="space-y-8">
             <h1 className="text-4xl md:text-6xl font-bold text-[#862896] leading-tight">
               Con experiencia y compromiso, construyamos un mejor Bolivia
