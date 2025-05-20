@@ -218,6 +218,7 @@
   animation: shine 3s infinite;
 }
 
+/* Meteor Animation */
 @keyframes meteor {
   0% {
     transform: rotate(var(--angle)) translateX(0);
@@ -234,6 +235,24 @@
 
 .animate-meteor {
   animation: var(--animate-meteor);
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  background: theme('colors.brand.yellow');
+  border-radius: 9999px;
+  box-shadow: 0 0 0 1px theme('colors.brand.yellow' / 0.1);
+  rotate: var(--angle);
+}
+
+.animate-meteor::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(to right, theme('colors.brand.yellow'), transparent);
 }
 
 /* Fix for z-index and absolute positioning */
@@ -245,6 +264,7 @@
   height: 100%;
   overflow: hidden;
   z-index: 0;
+  pointer-events: none;
 }
 
 .content-container {

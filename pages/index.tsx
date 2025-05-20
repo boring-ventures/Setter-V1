@@ -183,15 +183,24 @@ export default function Home() {
       <motion.section
         initial="initial"
         animate="animate"
-        className="min-h-[90vh] pt-20 relative overflow-hidden bg-gradient-to-br from-[#1a1f35] via-[#2a3149] to-[#1a1f35]"
+        className="min-h-[90vh] pt-20 relative overflow-hidden bg-gradient-to-br from-[#1a1f35] via-[#2a3149] to-[#1a1f35] flex items-center"
       >
-        <Meteors number={20} className="absolute inset-0" />
-        <ParticleBackground />
-        <div className="absolute inset-0 bg-[url('/wave-pattern.svg')] animate-wave opacity-5" />
+        {/* Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <ParticleBackground />
+          <div className="absolute inset-0 bg-[url('/wave-pattern.svg')] animate-wave opacity-5" />
+          <Meteors 
+            number={20} 
+            className="animate-meteor"
+            minDuration={5}
+            maxDuration={12}
+            angle={215}
+          />
+        </div>
         
         <motion.div 
           style={{ opacity, scale }}
-          className="container mx-auto px-4 h-full flex items-center justify-center relative z-10"
+          className="container mx-auto px-4 py-12 relative z-10"
         >
           <motion.div variants={fadeIn} className="max-w-4xl mx-auto text-center space-y-12">
             <div className="relative inline-block">
@@ -204,13 +213,51 @@ export default function Home() {
                 Beyond Automation: The Future of Customer Engagement is Here
               </motion.h1>
             </div>
-            <p className="text-xl md:text-2xl text-blue-100/80 font-light mb-12">
-              Revolutionizing customer service, sales, and operations with human-like AI
-            </p>
-            <div className="flex gap-4 justify-center">
-              <CallButton />
-            </div>
+
+            <motion.div 
+              variants={fadeInScale}
+              className="space-y-8"
+            >
+              <p className="text-xl md:text-2xl text-blue-100/80 font-light max-w-2xl mx-auto">
+                Revolutionizing customer service, sales, and operations with human-like AI
+              </p>
+
+              <div className="flex flex-col items-center gap-8">
+                <CallButton />
+                
+                {/* Feature indicators */}
+                <motion.div 
+                  className="flex items-center justify-center gap-6 text-sm text-blue-200/80 mt-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <div className="flex items-center gap-2">
+                    <i className="fas fa-check-circle text-blue-400 text-sm" />
+                    <span>24/7 Availability</span>
+                  </div>
+                  <div className="w-1 h-1 rounded-full bg-blue-400/30" />
+                  <div className="flex items-center gap-2">
+                    <i className="fas fa-shield-alt text-blue-400 text-sm" />
+                    <span>Secure Conversations</span>
+                  </div>
+                  <div className="w-1 h-1 rounded-full bg-blue-400/30" />
+                  <div className="flex items-center gap-2">
+                    <i className="fas fa-brain text-blue-400 text-sm" />
+                    <span>AI-Powered</span>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
           </motion.div>
+
+          {/* Decorative elements */}
+          <motion.div 
+            className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#1a1f35] to-transparent"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+          />
         </motion.div>
       </motion.section>
 
