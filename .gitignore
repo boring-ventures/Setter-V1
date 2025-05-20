@@ -16,6 +16,7 @@
 # misc
 .DS_Store
 *.pem
+.env*
 
 # debug
 npm-debug.log*
@@ -30,4 +31,11 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts 
+next-env.d.ts
+
+# IDE
+.vscode/
+.idea/
+
+# Cursor specific
+.cursorrule* 
