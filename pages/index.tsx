@@ -2,6 +2,9 @@
 import Head from "next/head";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import CallButton from "../components/CallButton";
+import TopBar from "../components/TopBar";
+import { Meteors } from "../components/magicui/meteors";
 
 // Animation variants
 const fadeIn = {
@@ -174,23 +177,26 @@ export default function Home() {
         />
       </Head>
 
+      <TopBar />
+
       {/* Hero Section */}
-      <motion.section 
+      <motion.section
         initial="initial"
         animate="animate"
-        className="min-h-screen relative overflow-hidden bg-gradient-to-br from-[#1a1f35] via-[#2a3149] to-[#1a1f35]"
+        className="min-h-[90vh] pt-20 relative overflow-hidden bg-gradient-to-br from-[#1a1f35] via-[#2a3149] to-[#1a1f35]"
       >
+        <Meteors number={20} className="absolute inset-0" />
         <ParticleBackground />
         <div className="absolute inset-0 bg-[url('/wave-pattern.svg')] animate-wave opacity-5" />
         
         <motion.div 
           style={{ opacity, scale }}
-          className="container mx-auto px-4 py-20 relative z-10"
+          className="container mx-auto px-4 h-full flex items-center justify-center relative z-10"
         >
-          <motion.div variants={fadeIn} className="max-w-4xl mx-auto text-center space-y-8">
+          <motion.div variants={fadeIn} className="max-w-4xl mx-auto text-center space-y-12">
             <div className="relative inline-block">
               <motion.h1 
-                className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-white leading-tight font-display"
+                className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-white leading-tight font-display mb-8"
                 animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                 transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
                 style={{ backgroundSize: '200% 100%' }}
@@ -198,18 +204,12 @@ export default function Home() {
                 Beyond Automation: The Future of Customer Engagement is Here
               </motion.h1>
             </div>
-            <p className="text-xl text-blue-100/80 font-light">
+            <p className="text-xl md:text-2xl text-blue-100/80 font-light mb-12">
               Revolutionizing customer service, sales, and operations with human-like AI
             </p>
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(96, 165, 250, 0.3)" }}
-              whileTap={{ scale: 0.95 }}
-              className="relative overflow-hidden bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 group"
-            >
-              <span className="relative z-10">Get a Free Consultation</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute inset-0 bg-[url('/wave-pattern.svg')] bg-cover opacity-20" />
-            </motion.button>
+            <div className="flex gap-4 justify-center">
+              <CallButton />
+            </div>
           </motion.div>
         </motion.div>
       </motion.section>

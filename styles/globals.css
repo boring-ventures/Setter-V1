@@ -24,6 +24,25 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
   }
+
+  section {
+    @apply relative;
+  }
+
+  /* Ensure proper section spacing */
+  section + section {
+    @apply mt-0;
+  }
+
+  /* Add padding to sections */
+  section {
+    @apply py-16 md:py-24;
+  }
+
+  /* Adjust top padding for first section due to fixed header */
+  section:first-of-type {
+    @apply pt-24 md:pt-32;
+  }
 }
 
 @layer components {
