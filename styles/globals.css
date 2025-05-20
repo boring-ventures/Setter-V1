@@ -5,8 +5,8 @@
 @layer base {
   :root {
     --animate-meteor: meteor 5s linear infinite;
+    --meteor-color: theme('colors.blue.400');
     --color-blue: #002F6C;
-    --color-yellow: #FFD200;
     --color-white: #FFFFFF;
   }
   
@@ -239,9 +239,9 @@
   top: 0;
   width: 1px;
   height: 1px;
-  background: theme('colors.brand.yellow');
+  background: var(--meteor-color);
   border-radius: 9999px;
-  box-shadow: 0 0 0 1px theme('colors.brand.yellow' / 0.1);
+  box-shadow: 0 0 0 1px var(--meteor-color / 0.1);
   rotate: var(--angle);
 }
 
@@ -252,7 +252,7 @@
   transform: translateY(-50%);
   width: 50px;
   height: 1px;
-  background: linear-gradient(to right, theme('colors.brand.yellow'), transparent);
+  background: linear-gradient(to right, var(--meteor-color), transparent);
 }
 
 /* Fix for z-index and absolute positioning */
