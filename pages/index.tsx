@@ -183,42 +183,48 @@ export default function Home() {
       <motion.section
         initial="initial"
         animate="animate"
-        className="min-h-[90vh] pt-20 relative overflow-hidden bg-gradient-to-br from-[#1a1f35] via-[#2a3149] to-[#1a1f35] flex items-center"
+        className="min-h-[90vh] pt-20 relative overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] flex items-center"
       >
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <ParticleBackground />
-          <div className="absolute inset-0 bg-[url('/wave-pattern.svg')] animate-wave opacity-5" />
+          <div className="absolute inset-0 bg-[url('/wave-pattern.svg')] animate-wave opacity-3" />
           <Meteors 
-            number={20} 
-            className="animate-meteor !bg-blue-400 [--meteor-color:theme(colors.blue.400)]"
-            minDuration={5}
-            maxDuration={12}
+            number={15} 
+            className="animate-meteor !bg-blue-300/30 [--meteor-color:theme(colors.blue.300/30)]"
+            minDuration={8}
+            maxDuration={15}
             angle={215}
           />
         </div>
         
         <motion.div 
           style={{ opacity, scale }}
-          className="container mx-auto px-4 py-12 relative z-10"
+          className="container mx-auto px-4 py-16 relative z-10"
         >
           <motion.div variants={fadeIn} className="max-w-4xl mx-auto text-center space-y-12">
             <div className="relative inline-block">
               <motion.h1 
-                className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-white leading-tight font-display mb-8"
+                className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-white leading-tight font-display mb-8"
                 animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+                transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
                 style={{ backgroundSize: '200% 100%' }}
               >
-                Más Allá de la Automatización: El Futuro de la Atención al Cliente está Aquí
+                Más Allá de la Automatización
               </motion.h1>
+              <motion.p
+                className="text-3xl md:text-4xl font-light text-blue-100/90 mt-4"
+                variants={fadeInScale}
+              >
+                El Futuro de la Atención al Cliente está Aquí
+              </motion.p>
             </div>
 
             <motion.div 
               variants={fadeInScale}
               className="space-y-8"
             >
-              <p className="text-xl md:text-2xl text-blue-100/80 font-light max-w-2xl mx-auto">
+              <p className="text-xl md:text-2xl text-blue-100/70 font-light max-w-2xl mx-auto leading-relaxed">
                 Revolucionando el servicio al cliente, ventas y operaciones con IA de aspecto humano
               </p>
 
@@ -230,455 +236,279 @@ export default function Home() {
         </motion.div>
       </motion.section>
 
-      {/* Problem/Solution Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <GlowingDots />
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-transparent" />
+      {/* Features Grid */}
+      <section className="py-32 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-50/80 via-white to-blue-50/80" />
         <div className="container mx-auto px-4 relative">
           <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
             <motion.h2 
               variants={fadeIn} 
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-display gradient-text-animate from-gray-900 via-blue-800 to-gray-900"
+              className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-display"
             >
-              Los Desafíos que Enfrentas. Nuestras Soluciones Inteligentes.
+              Soluciones Inteligentes
             </motion.h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Transforme su negocio con tecnología de vanguardia
+            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {[
               {
-                challenge: "High Customer Service Costs",
-                solution: "24/7 AI-Powered Support",
                 icon: (
-                  <svg className="w-12 h-12" viewBox="0 0 48 48" fill="none">
-                    <motion.path 
-                      d="M24 4v40M4 24h40" 
-                      stroke="currentColor" 
-                      strokeWidth="2" 
-                      strokeLinecap="round"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      transition={{ duration: 1.5, ease: "easeInOut" }}
-                    />
-                    <motion.circle 
-                      cx="24" 
-                      cy="24" 
-                      r="16" 
-                      stroke="currentColor" 
-                      strokeWidth="2" 
-                      strokeDasharray="4 4"
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 0.5 }}
-                    />
+                  <svg className="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                    <circle cx="12" cy="12" r="4" />
                   </svg>
                 ),
-                gradient: "from-blue-500 to-blue-600",
+                title: "Personalización Avanzada",
+                description: "IA adaptativa que aprende y mejora con cada interacción"
               },
               {
-                challenge: "Inconsistent Service Quality",
-                solution: "Standardized, Perfect Responses",
                 icon: (
-                  <svg className="w-12 h-12" viewBox="0 0 48 48" fill="none">
-                    <motion.path 
-                      d="M8 24c0-8.837 7.163-16 16-16s16 7.163 16 16-7.163 16-16 16" 
-                      stroke="currentColor" 
-                      strokeWidth="2" 
-                      strokeLinecap="round"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      transition={{ duration: 1.5, ease: "easeInOut" }}
-                    />
-                    <motion.path 
-                      d="M24 16v16M16 24h16" 
-                      stroke="currentColor" 
-                      strokeWidth="2" 
-                      strokeLinecap="round"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.5, delay: 0.8 }}
-                    />
+                  <svg className="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 ),
-                gradient: "from-indigo-500 to-indigo-600",
+                title: "Respuesta Instantánea",
+                description: "Atención inmediata 24/7 para sus clientes"
               },
               {
-                challenge: "Limited Scalability",
-                solution: "Infinite Concurrent Conversations",
                 icon: (
-                  <svg className="w-12 h-12" viewBox="0 0 48 48" fill="none">
-                    <motion.path 
-                      d="M12 36l24-24M12 12l24 24" 
-                      stroke="currentColor" 
-                      strokeWidth="2" 
-                      strokeLinecap="round"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      transition={{ duration: 1.5, ease: "easeInOut" }}
-                    />
-                    <motion.circle 
-                      cx="12" 
-                      cy="24" 
-                      r="8" 
-                      stroke="currentColor" 
-                      strokeWidth="2"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.5, delay: 0.5 }}
-                    />
-                    <motion.circle 
-                      cx="36" 
-                      cy="24" 
-                      r="8" 
-                      stroke="currentColor" 
-                      strokeWidth="2"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.5, delay: 0.7 }}
-                    />
+                  <svg className="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
                 ),
-                gradient: "from-purple-500 to-purple-600",
+                title: "Análisis en Tiempo Real",
+                description: "Insights detallados sobre cada conversación"
               },
               {
-                challenge: "Lost Sales Opportunities",
-                solution: "Proactive Engagement & Follow-ups",
                 icon: (
-                  <svg className="w-12 h-12" viewBox="0 0 48 48" fill="none">
-                    <motion.path 
-                      d="M24 4l16 8v24l-16 8-16-8V12l16-8z" 
-                      stroke="currentColor" 
-                      strokeWidth="2"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      transition={{ duration: 1.5, ease: "easeInOut" }}
-                    />
-                    <motion.path 
-                      d="M24 20v8" 
-                      stroke="currentColor" 
-                      strokeWidth="2" 
-                      strokeLinecap="round"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.5, delay: 0.8 }}
-                    />
-                    <motion.circle 
-                      cx="24" 
-                      cy="32" 
-                      r="1" 
-                      fill="currentColor"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.3, delay: 1 }}
-                    />
+                  <svg className="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                   </svg>
                 ),
-                gradient: "from-cyan-500 to-cyan-600",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInScale}
-                className="group relative animated-border-card"
-              >
-                <AnimatedBorder className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 z-10">
-                  <div className={`mb-6 text-transparent bg-gradient-to-br ${item.gradient} bg-clip-text`}>
-                    <div className="transform group-hover:scale-110 transition-transform duration-300">
-                      {item.icon}
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 font-display">
-                    {item.challenge}
-                  </h3>
-                  <p className="text-gray-600">
-                    {item.solution}
-                  </p>
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Core Capabilities Section */}
-      <section className="py-24 bg-gray-50 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-blue-600/5" />
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(96, 165, 250, 0.1) 1px, transparent 0)',
-          backgroundSize: '40px 40px'
-        }} />
-        
-        <div className="container mx-auto px-4 relative">
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center mb-16"
-          >
-            <motion.h2 
-              variants={fadeIn} 
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-display"
-            >
-              Intelligent AI Voice Agents Designed for Your Success
-            </motion.h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                title: "Servicio al Cliente IA",
-                description: "Gestione consultas, resuelva problemas y mantenga la satisfacción 24/7",
-                icon: (
-                  <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
-                    <circle cx="16" cy="16" r="12" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M16 12v8M12 16h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                ),
-                gradient: "from-blue-500 to-blue-600",
+                title: "Integración Perfecta",
+                description: "Se adapta a sus sistemas existentes sin problemas"
               },
               {
-                title: "Ventas y Generación de Leads IA",
-                description: "Califique leads y cierre ventas con conversaciones inteligentes",
                 icon: (
-                  <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
-                    <path d="M4 28l8-8M12 20l12-12M24 8l-4-4M28 12l-4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  <svg className="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 ),
-                gradient: "from-indigo-500 to-indigo-600",
+                title: "Seguridad Garantizada",
+                description: "Protección de datos de nivel empresarial"
               },
               {
-                title: "Eficiencia Operativa IA",
-                description: "Optimice procesos y reduzca la carga de trabajo manual",
                 icon: (
-                  <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
-                    <path d="M16 4v24M8 12l16 8M8 20l16-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  <svg className="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                   </svg>
                 ),
-                gradient: "from-purple-500 to-purple-600",
-              },
-              {
-                title: "Custom AI Development",
-                description: "Tailored solutions for your unique business needs",
-                icon: (
-                  <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
-                    <path d="M16 4l12 7v10l-12 7-12-7V11l12-7z" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M16 16v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                ),
-                gradient: "from-cyan-500 to-cyan-600",
-              },
-            ].map((service, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInScale}
-                className="group relative"
-              >
-                <div className="absolute inset-0.5 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl blur" />
-                <div className="relative bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
-                  <div className={`w-12 h-12 bg-gradient-to-br ${service.gradient} rounded-lg flex items-center justify-center mb-4 text-white transform group-hover:scale-110 transition-transform duration-300`}>
-                    {service.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 font-display">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {service.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us Section */}
-      <section className="py-24 bg-[#1a1f35] text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/wave-pattern.svg')] animate-wave opacity-5" />
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10" />
-        
-        <div className="container mx-auto px-4 relative">
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center mb-16"
-          >
-            <motion.h2 
-              variants={fadeIn} 
-              className="text-3xl md:text-4xl font-bold mb-4 font-display bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-200"
-            >
-              The VoiceAI Agency Difference
-            </motion.h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Tecnología de Vanguardia",
-                description: "Impulsado por los últimos avances en IA y procesamiento del lenguaje natural",
-                icon: (
-                  <svg className="w-10 h-10" viewBox="0 0 40 40" fill="none">
-                    <path d="M20 4l12 7v18l-12 7-12-7V11l12-7z" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M20 18l6 3.5v7l-6 3.5-6-3.5v-7l6-3.5z" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M20 4v14M8 11l24 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                ),
-              },
-              {
-                title: "Resultados Probados",
-                description: "95% de satisfacción del cliente y 60% de reducción de costos para nuestros clientes",
-                icon: (
-                  <svg className="w-10 h-10" viewBox="0 0 40 40" fill="none">
-                    <path d="M8 32l8-8 8 8 12-12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <circle cx="8" cy="20" r="4" stroke="currentColor" strokeWidth="2"/>
-                    <circle cx="24" cy="12" r="4" stroke="currentColor" strokeWidth="2"/>
-                  </svg>
-                ),
-              },
-              {
-                title: "Enfoque de Colaboración",
-                description: "Estamos invertidos en su éxito con optimización y soporte continuo",
-                icon: (
-                  <svg className="w-10 h-10" viewBox="0 0 40 40" fill="none">
-                    <path d="M20 4v32M4 20h32" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <circle cx="20" cy="20" r="6" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M20 8a12 12 0 0 1 0 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                ),
-              },
+                title: "Escalabilidad Total",
+                description: "Crece con su negocio sin limitaciones"
+              }
             ].map((feature, index) => (
               <motion.div
                 key={index}
                 variants={fadeInScale}
-                className="relative group"
+                className="group relative bg-white rounded-2xl p-8 shadow-[0_0_50px_rgba(0,0,0,0.03)] hover:shadow-[0_0_50px_rgba(0,0,0,0.08)] transition-all duration-300"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl blur-xl" />
-                <div className="relative bg-white/5 backdrop-blur-lg p-8 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300">
-                  <div className="text-blue-400 group-hover:text-blue-300 transition-colors duration-300 mb-6">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-4 font-display group-hover:text-blue-300 transition-colors duration-300">
-                    {feature.title}
-                  </h3>
-                  <p className="text-blue-100/80">
-                    {feature.description}
-                  </p>
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500/0 via-blue-500/50 to-blue-500/0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                <div className="bg-blue-50 rounded-xl p-4 mb-6 w-16 h-16 flex items-center justify-center group-hover:bg-blue-100 transition-colors duration-300">
+                  {feature.icon}
                 </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {feature.description}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-50/50 via-transparent to-blue-50/50" />
+      {/* Pricing Section */}
+      <section className="py-32 bg-gradient-to-br from-gray-50 via-white to-blue-50/50 relative overflow-hidden">
         <div className="container mx-auto px-4 relative">
           <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
             <motion.h2 
               variants={fadeIn} 
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-display"
+              className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-display"
             >
-              Nuestro Proceso Sin Complicaciones
+              Soluciones Adaptadas a Su Negocio
             </motion.h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Elija el plan que mejor se adapte a sus necesidades empresariales y objetivos de crecimiento
+            </p>
           </motion.div>
 
-          <div className="relative">
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-200 via-blue-400 to-blue-200 transform -translate-y-1/2 hidden md:block" />
-            
-            <div className="grid md:grid-cols-4 gap-8">
-              {[
-                {
-                  step: "01",
-                  title: "Consulta y Estrategia",
-                  description: "Analizamos sus necesidades y diseñamos una solución personalizada",
-                  icon: (
-                    <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
-                      <path d="M16 4v24M8 12l16 8M8 20l16-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {/* Essential Plan */}
+            <motion.div
+              variants={fadeInScale}
+              className="relative group"
+            >
+              <div className="relative bg-white/50 backdrop-blur-sm p-8 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.03)] hover:shadow-[0_0_50px_rgba(0,0,0,0.08)] transition-all duration-300">
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Asistente Esencial</h3>
+                <div className="flex items-baseline mb-8">
+                  <span className="text-5xl font-bold text-gray-900">$2,000</span>
+                  <span className="text-gray-500 ml-2">/ inicio</span>
+                </div>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-center text-gray-700">
+                    <svg className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
-                  ),
-                },
-                {
-                  step: "02",
-                  title: "Desarrollo y Entrenamiento",
-                  description: "Construimos y entrenamos sus agentes de voz IA",
-                  icon: (
-                    <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
-                      <circle cx="16" cy="16" r="12" stroke="currentColor" strokeWidth="2"/>
-                      <path d="M16 10v12M10 16h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    <span>Asistente IA personalizado</span>
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <svg className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
-                  ),
-                },
-                {
-                  step: "03",
-                  title: "Integración y Optimización",
-                  description: "Integración perfecta con sus sistemas existentes",
-                  icon: (
-                    <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
-                      <path d="M4 16h24M16 4v24" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                      <circle cx="16" cy="16" r="6" stroke="currentColor" strokeWidth="2"/>
+                    <span>Integración en su sitio web</span>
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <svg className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
-                  ),
-                },
-                {
-                  step: "04",
-                  title: "Soporte y Escalabilidad",
-                  description: "Mejora continua y escalamiento",
-                  icon: (
-                    <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
-                      <path d="M4 28l24-24M4 4l24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    <span>Soporte básico 24/7</span>
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <svg className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
-                  ),
-                },
-              ].map((step, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInScale}
-                  className="relative group"
-                >
-                  <div className="relative z-10 bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                      {step.step}
-                    </div>
-                    <div className="text-blue-600 mb-4">
-                      {step.icon}
-                    </div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3 font-display">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-600">
-                      {step.description}
-                    </p>
-                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500/0 via-blue-500/50 to-blue-500/0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                    <span>Hasta 1,000 interacciones/mes</span>
+                  </li>
+                </ul>
+                <button className="w-full bg-white text-blue-600 border-2 border-blue-600 px-6 py-3 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300">
+                  Comenzar Ahora
+                </button>
+              </div>
+            </motion.div>
+
+            {/* Professional Plan */}
+            <motion.div
+              variants={fadeInScale}
+              className="relative group lg:-mt-4"
+            >
+              <div className="relative bg-gradient-to-br from-blue-600 to-blue-700 p-8 rounded-2xl shadow-[0_0_50px_rgba(37,99,235,0.15)] hover:shadow-[0_0_50px_rgba(37,99,235,0.25)] transition-all duration-300">
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-2 rounded-full text-sm font-semibold">
+                  Más Popular
+                </div>
+                <h3 className="text-2xl font-semibold text-white mb-4">Asistente Profesional</h3>
+                <div className="flex items-baseline mb-8">
+                  <span className="text-5xl font-bold text-white">$3,500</span>
+                  <span className="text-blue-100 ml-2">/ inicio</span>
+                </div>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-center text-white">
+                    <svg className="w-5 h-5 text-blue-200 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Todo lo del plan Esencial</span>
+                  </li>
+                  <li className="flex items-center text-white">
+                    <svg className="w-5 h-5 text-blue-200 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Personalización avanzada</span>
+                  </li>
+                  <li className="flex items-center text-white">
+                    <svg className="w-5 h-5 text-blue-200 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Integración con CRM</span>
+                  </li>
+                  <li className="flex items-center text-white">
+                    <svg className="w-5 h-5 text-blue-200 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Hasta 5,000 interacciones/mes</span>
+                  </li>
+                  <li className="flex items-center text-white">
+                    <svg className="w-5 h-5 text-blue-200 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Análisis y reportes avanzados</span>
+                  </li>
+                </ul>
+                <button className="w-full bg-white text-blue-600 px-6 py-3 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300">
+                  Comenzar Ahora
+                </button>
+              </div>
+            </motion.div>
+
+            {/* Enterprise Plan */}
+            <motion.div
+              variants={fadeInScale}
+              className="relative group"
+            >
+              <div className="relative bg-white/50 backdrop-blur-sm p-8 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.03)] hover:shadow-[0_0_50px_rgba(0,0,0,0.08)] transition-all duration-300">
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Asistente Empresarial</h3>
+                <div className="flex items-baseline mb-8">
+                  <span className="text-5xl font-bold text-gray-900">$7,500</span>
+                  <span className="text-gray-500 ml-2">/ inicio</span>
+                </div>
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-center text-gray-700">
+                    <svg className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Todo lo del plan Profesional</span>
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <svg className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Personalización total</span>
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <svg className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Integración con múltiples sistemas</span>
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <svg className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Interacciones ilimitadas</span>
+                  </li>
+                  <li className="flex items-center text-gray-700">
+                    <svg className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Soporte prioritario 24/7</span>
+                  </li>
+                </ul>
+                <button className="w-full bg-white text-blue-600 border-2 border-blue-600 px-6 py-3 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300">
+                  Contactar Ventas
+                </button>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Secondary CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-[#1a1f35] to-[#2a3149] text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/wave-pattern.svg')] animate-wave opacity-5" />
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10" />
+      <section className="py-32 bg-gradient-to-br from-[#0f172a] to-[#1e293b] text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/wave-pattern.svg')] animate-wave opacity-3" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-blue-600/5" />
         
         <div className="container mx-auto px-4 text-center relative">
           <motion.div
@@ -688,13 +518,13 @@ export default function Home() {
             variants={fadeIn}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 font-display bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-blue-400">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 font-display bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
               ¿Listo para Transformar su Negocio?
             </h2>
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(96, 165, 250, 0.3)" }}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(96, 165, 250, 0.2)" }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg"
+              className="bg-white text-blue-600 px-10 py-4 rounded-xl text-lg font-semibold hover:bg-blue-50 transition-all duration-300 shadow-lg"
             >
               Solicitar una Demo
             </motion.button>
