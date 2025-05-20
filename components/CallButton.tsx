@@ -74,9 +74,9 @@ export default function CallButton() {
       }
     } catch (error) {
       if (error instanceof DOMException && error.name === "NotAllowedError") {
-        setError("Please allow microphone access to use the voice assistant");
+        setError("Por favor, permita el acceso al micrófono para usar el asistente de voz");
       } else {
-        setError("Failed to start call. Please try again.");
+        setError("No se pudo iniciar la llamada. Por favor, inténtelo de nuevo.");
       }
     }
   };
@@ -97,7 +97,7 @@ export default function CallButton() {
         disabled={isCallActive}
         className="relative overflow-hidden bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 group hover:scale-105 hover:shadow-[0_0_30px_rgba(96,165,250,0.3)] disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        <span className="relative z-10">{isCallActive ? 'Call in Progress' : 'Talk with our Assistant'}</span>
+        <span className="relative z-10">{isCallActive ? 'Llamada en Progreso' : 'Hablar con nuestro Asistente'}</span>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         <div className="absolute inset-0 bg-[url('/wave-pattern.svg')] bg-cover opacity-20" />
       </button>
@@ -111,7 +111,7 @@ export default function CallButton() {
             onClick={handleEndCall}
             className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300"
           >
-            End Call
+            Finalizar Llamada
           </button>
         </div>
       )}

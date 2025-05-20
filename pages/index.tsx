@@ -165,8 +165,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>VoiceAI Agency - The Future of Customer Engagement</title>
-        <meta name="description" content="Transform your business with AI-powered voice agents for customer service, sales, and operations." />
+        <title>VoiceAI Agency - El Futuro de la Atención al Cliente</title>
+        <meta name="description" content="Transforme su negocio con agentes de voz impulsados por IA para servicio al cliente, ventas y operaciones." />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -210,7 +210,7 @@ export default function Home() {
                 transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
                 style={{ backgroundSize: '200% 100%' }}
               >
-                Beyond Automation: The Future of Customer Engagement is Here
+                Más Allá de la Automatización: El Futuro de la Atención al Cliente está Aquí
               </motion.h1>
             </div>
 
@@ -219,7 +219,7 @@ export default function Home() {
               className="space-y-8"
             >
               <p className="text-xl md:text-2xl text-blue-100/80 font-light max-w-2xl mx-auto">
-                Revolutionizing customer service, sales, and operations with human-like AI
+                Revolucionando el servicio al cliente, ventas y operaciones con IA de aspecto humano
               </p>
 
               <div className="flex items-center justify-center">
@@ -246,7 +246,7 @@ export default function Home() {
               variants={fadeIn} 
               className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-display gradient-text-animate from-gray-900 via-blue-800 to-gray-900"
             >
-              The Challenges You Face. Our Intelligent Solutions.
+              Los Desafíos que Enfrentas. Nuestras Soluciones Inteligentes.
             </motion.h2>
           </motion.div>
 
@@ -435,8 +435,8 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                title: "Customer Service AI",
-                description: "Handle inquiries, resolve issues, and maintain satisfaction 24/7",
+                title: "Servicio al Cliente IA",
+                description: "Gestione consultas, resuelva problemas y mantenga la satisfacción 24/7",
                 icon: (
                   <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
                     <circle cx="16" cy="16" r="12" stroke="currentColor" strokeWidth="2"/>
@@ -446,8 +446,8 @@ export default function Home() {
                 gradient: "from-blue-500 to-blue-600",
               },
               {
-                title: "Sales & Lead Generation AI",
-                description: "Qualify leads and close deals with intelligent conversations",
+                title: "Ventas y Generación de Leads IA",
+                description: "Califique leads y cierre ventas con conversaciones inteligentes",
                 icon: (
                   <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
                     <path d="M4 28l8-8M12 20l12-12M24 8l-4-4M28 12l-4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
@@ -456,8 +456,8 @@ export default function Home() {
                 gradient: "from-indigo-500 to-indigo-600",
               },
               {
-                title: "Operational Efficiency AI",
-                description: "Streamline processes and reduce manual workload",
+                title: "Eficiencia Operativa IA",
+                description: "Optimice procesos y reduzca la carga de trabajo manual",
                 icon: (
                   <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
                     <path d="M16 4v24M8 12l16 8M8 20l16-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
@@ -524,8 +524,8 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "Cutting-edge Technology",
-                description: "Powered by the latest advancements in AI and natural language processing",
+                title: "Tecnología de Vanguardia",
+                description: "Impulsado por los últimos avances en IA y procesamiento del lenguaje natural",
                 icon: (
                   <svg className="w-10 h-10" viewBox="0 0 40 40" fill="none">
                     <path d="M20 4l12 7v18l-12 7-12-7V11l12-7z" stroke="currentColor" strokeWidth="2"/>
@@ -535,8 +535,8 @@ export default function Home() {
                 ),
               },
               {
-                title: "Proven Results",
-                description: "95% customer satisfaction rate and 60% cost reduction for our clients",
+                title: "Resultados Probados",
+                description: "95% de satisfacción del cliente y 60% de reducción de costos para nuestros clientes",
                 icon: (
                   <svg className="w-10 h-10" viewBox="0 0 40 40" fill="none">
                     <path d="M8 32l8-8 8 8 12-12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -546,8 +546,8 @@ export default function Home() {
                 ),
               },
               {
-                title: "Partnership Approach",
-                description: "We're invested in your success with continuous optimization and support",
+                title: "Enfoque de Colaboración",
+                description: "Estamos invertidos en su éxito con optimización y soporte continuo",
                 icon: (
                   <svg className="w-10 h-10" viewBox="0 0 40 40" fill="none">
                     <path d="M20 4v32M4 20h32" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
@@ -596,7 +596,7 @@ export default function Home() {
               variants={fadeIn} 
               className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-display"
             >
-              Our Seamless Process
+              Nuestro Proceso Sin Complicaciones
             </motion.h2>
           </motion.div>
 
@@ -607,8 +607,8 @@ export default function Home() {
               {[
                 {
                   step: "01",
-                  title: "Consult & Strategize",
-                  description: "We analyze your needs and design a custom solution",
+                  title: "Consulta y Estrategia",
+                  description: "Analizamos sus necesidades y diseñamos una solución personalizada",
                   icon: (
                     <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
                       <path d="M16 4v24M8 12l16 8M8 20l16-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
@@ -617,8 +617,8 @@ export default function Home() {
                 },
                 {
                   step: "02",
-                  title: "Develop & Train",
-                  description: "Build and train your AI voice agents",
+                  title: "Desarrollo y Entrenamiento",
+                  description: "Construimos y entrenamos sus agentes de voz IA",
                   icon: (
                     <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
                       <circle cx="16" cy="16" r="12" stroke="currentColor" strokeWidth="2"/>
@@ -628,8 +628,8 @@ export default function Home() {
                 },
                 {
                   step: "03",
-                  title: "Integrate & Optimize",
-                  description: "Seamless integration with your existing systems",
+                  title: "Integración y Optimización",
+                  description: "Integración perfecta con sus sistemas existentes",
                   icon: (
                     <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
                       <path d="M4 16h24M16 4v24" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
@@ -639,8 +639,8 @@ export default function Home() {
                 },
                 {
                   step: "04",
-                  title: "Support & Scale",
-                  description: "Continuous improvement and scaling",
+                  title: "Soporte y Escalabilidad",
+                  description: "Mejora continua y escalamiento",
                   icon: (
                     <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
                       <path d="M4 28l24-24M4 4l24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
@@ -689,14 +689,14 @@ export default function Home() {
             className="max-w-3xl mx-auto"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-8 font-display bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-blue-400">
-              Ready to Transform Your Business?
+              ¿Listo para Transformar su Negocio?
             </h2>
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(96, 165, 250, 0.3)" }}
               whileTap={{ scale: 0.95 }}
               className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg"
             >
-              Request a Demo
+              Solicitar una Demo
             </motion.button>
           </motion.div>
         </div>
@@ -712,13 +712,13 @@ export default function Home() {
                 VoiceAI Agency
               </h4>
               <p className="text-blue-100/70 leading-relaxed">
-                Transforming customer engagement through intelligent AI voice solutions.
+                Transformando la interacción con el cliente a través de soluciones de voz IA inteligentes.
               </p>
             </div>
             <div>
-              <h4 className="font-bold text-lg mb-6 font-display">Quick Links</h4>
+              <h4 className="font-bold text-lg mb-6 font-display">Enlaces Rápidos</h4>
               <ul className="space-y-3">
-                {['About Us', 'Services', 'Case Studies', 'Contact'].map((link) => (
+                {['Sobre Nosotros', 'Servicios', 'Casos de Éxito', 'Contacto'].map((link) => (
                   <li key={link}>
                     <a 
                       href="#" 
@@ -764,10 +764,10 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-white/10 mt-12 pt-8 text-center text-blue-100/60 text-sm">
-            <p>© 2024 VoiceAI Agency. All rights reserved.</p>
+            <p>© 2024 VoiceAI Agency. Todos los derechos reservados.</p>
             <div className="mt-4 space-x-6">
-              <a href="#" className="hover:text-white transition-colors duration-300">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors duration-300">Terms of Service</a>
+              <a href="#" className="hover:text-white transition-colors duration-300">Política de Privacidad</a>
+              <a href="#" className="hover:text-white transition-colors duration-300">Términos de Servicio</a>
             </div>
           </div>
         </div>

@@ -6,8 +6,8 @@ export default function TopBar() {
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="text-xl font-bold text-blue-600">VoiceAI Agency</div>
         <div className="flex items-center gap-4">
-          <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors">Features</a>
-          <a href="#about" className="text-gray-600 hover:text-gray-900 transition-colors">About</a>
+          <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors">Características</a>
+          <a href="#about" className="text-gray-600 hover:text-gray-900 transition-colors">Nosotros</a>
           <CallButton />
         </div>
       </div>
