@@ -9,11 +9,11 @@
     --color-blue: #002F6C;
     --color-white: #FFFFFF;
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
     @apply text-gray-900 bg-white;
     overflow-x: hidden;
@@ -43,13 +43,17 @@
   section:first-of-type {
     @apply pt-24 md:pt-32;
   }
+  .theme {
+    --animate-shine: shine var(--duration) infinite linear;
+    --animate-aurora: aurora 8s ease-in-out infinite alternate;
+  }
 }
 
 @layer components {
   .container {
     @apply max-w-7xl mx-auto;
   }
-  
+
   .gradient-text {
     @apply bg-clip-text text-transparent bg-gradient-to-r;
   }
@@ -288,4 +292,40 @@
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
+}
+
+@theme inline {
+  @keyframes shine {
+  0% {
+    background-position: 0% 0%;
+    }
+  50% {
+    background-position: 100% 100%;
+    }
+  to {
+    background-position: 0% 0%;
+    }
+  }
+  @keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+    transform: rotate(-5deg) scale(0.9);
+    }
+  25% {
+    background-position: 50% 100%;
+    transform: rotate(5deg) scale(1.1);
+    }
+  50% {
+    background-position: 100% 50%;
+    transform: rotate(-3deg) scale(0.95);
+    }
+  75% {
+    background-position: 50% 0%;
+    transform: rotate(3deg) scale(1.05);
+    }
+  100% {
+    background-position: 0% 50%;
+    transform: rotate(-5deg) scale(0.9);
+    }
+  }
 }
