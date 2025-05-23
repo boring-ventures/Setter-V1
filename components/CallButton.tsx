@@ -6,6 +6,7 @@ export default function CallButton() {
   const [error, setError] = useState<string | null>(null);
   const [isCallActive, setIsCallActive] = useState(false);
   const [timer, setTimer] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const vapiRef = useRef<any>(null);
 
@@ -17,18 +18,21 @@ export default function CallButton() {
 
         vapi.on("call-start", () => {
           setIsCallActive(true);
+          setIsLoading(false);
           startTimer();
           console.log("Call started");
         });
 
         vapi.on("call-end", () => {
           setIsCallActive(false);
+          setIsLoading(false);
           stopTimer();
           console.log("Call ended");
         });
 
         vapi.on("error", (e: Error) => {
           setError(e.message);
+          setIsLoading(false);
           console.error("Vapi error:", e);
         });
 
@@ -66,6 +70,7 @@ export default function CallButton() {
 
   const handleCall = async () => {
     try {
+      setIsLoading(true);
       // Request microphone permissions
       await navigator.mediaDevices.getUserMedia({ audio: true });
       
@@ -73,6 +78,7 @@ export default function CallButton() {
         await vapiRef.current.start(process.env.NEXT_PUBLIC_ASSISTANT_ID!);
       }
     } catch (error) {
+      setIsLoading(false);
       if (error instanceof DOMException && error.name === "NotAllowedError") {
         setError("Por favor, permita el acceso al micrófono para usar el asistente de voz");
       } else {
@@ -94,13 +100,22 @@ export default function CallButton() {
       <button
         id="vapi-call-btn"
         onClick={handleCall}
-        disabled={isCallActive}
+        disabled={isCallActive || isLoading}
         className="relative overflow-hidden bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 group hover:scale-105 hover:shadow-[0_0_30px_rgba(96,165,250,0.3)] disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        <span className="relative z-10">{isCallActive ? 'Llamada en Progreso' : 'Hablar con nuestro Asistente'}</span>
+        <span className="relative z-10">
+          {isLoading ? 'Conectando con nuestro equipo...' : isCallActive ? 'Llamada en Progreso' : 'Hablar con nuestro Asistente'}
+        </span>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         <div className="absolute inset-0 bg-[url('/wave-pattern.svg')] bg-cover opacity-20" />
       </button>
+
+      {isLoading && (
+        <div className="flex items-center gap-2 text-blue-600">
+          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
+          <span className="text-sm">Estamos conectándote con uno de nuestros asesores expertos...</span>
+        </div>
+      )}
 
       {isCallActive && (
         <div className="flex flex-col items-center gap-3">
